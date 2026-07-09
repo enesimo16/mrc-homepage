@@ -9,7 +9,7 @@ export default function Stats() {
 
   const stats = [
     { value: 30, suffix: "+", label: t.stats.experience },
-    { value: 7000, suffix: " m²", label: t.stats.facility },
+    { value: 10000, suffix: " m²", label: t.stats.facility },
     { value: 120, suffix: "+", label: t.stats.staff },
     { value: 3000, suffix: "+", label: t.stats.sku },
   ];
