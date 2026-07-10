@@ -38,7 +38,7 @@ export const SECTION_TO_NAV: Record<SectionId, number> = {
 
 export const WHATSAPP_URL = "https://wa.me/905495531654";
 export const DEALER_URL = "https://b2b.cappafe.com";
-export const ONLINE_STORE_URL = "https://cappafe.com";
+export const ONLINE_STORE_URL = "https://www.cappafe.com.tr";
 export const CONTACT_EMAIL = "info@cappafe.com";
 export const COMPANY_ADDRESS = {
   line1: "Ovaakça Santral Mh. İstanbul Cd. No:646",
