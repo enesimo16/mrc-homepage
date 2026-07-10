@@ -13,41 +13,62 @@ import { LANGS, type Lang } from "@/lib/i18n";
 
 function TopUtilityBar() {
   const { t } = useLanguage();
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    function onScroll() {
+      setVisible(window.scrollY < 40);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div className="hidden items-center gap-4 bg-ink px-4 py-2 sm:flex sm:px-6 lg:px-10">
-      <div className="flex items-center gap-2">
-        {SOCIALS.map(({ label, href, Icon }) => (
-          <a
-            key={label}
-            href={href}
-            aria-label={label}
-            title={label}
-            className="flex h-6.5 w-6.5 items-center justify-center rounded-full text-ink-contrast/60 transition-colors hover:text-ink-contrast"
-          >
-            <Icon />
-          </a>
-        ))}
-      </div>
-      <div className="ml-auto flex items-center gap-2">
-        <a
-          href={ONLINE_STORE_URL}
-          target="_blank"
-          rel="noopener"
-          className="rounded-full bg-accent px-4 py-1.5 font-mono text-[11px] font-bold tracking-[0.06em] whitespace-nowrap text-white no-underline transition-colors hover:bg-accent-hover"
+    <AnimatePresence initial={false}>
+      {visible && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
+          className="hidden overflow-hidden sm:block"
         >
-          {t.hero.onlineSaleCta}
-        </a>
-        <a
-          href={DEALER_URL}
-          target="_blank"
-          rel="noopener"
-          className="rounded-full border border-ink-contrast/25 px-4 py-1.5 font-mono text-[11px] font-bold tracking-[0.06em] whitespace-nowrap text-ink-contrast no-underline transition-colors hover:border-ink-contrast/60"
-        >
-          {t.hero.dealerCta}
-        </a>
-      </div>
-    </div>
+          <div className="flex items-center gap-4 bg-ink px-4 py-2 sm:px-6 lg:px-10">
+            <div className="flex items-center gap-2">
+              {SOCIALS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  title={label}
+                  className="flex h-6.5 w-6.5 items-center justify-center rounded-full text-ink-contrast/60 transition-colors hover:text-ink-contrast"
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
+            <div className="ml-auto flex items-center gap-2">
+              <a
+                href={ONLINE_STORE_URL}
+                target="_blank"
+                rel="noopener"
+                className="rounded-full border border-accent-light/50 px-4 py-1.5 text-[13px] font-bold whitespace-nowrap text-accent-light no-underline transition-colors hover:border-accent-light hover:bg-accent-light/10"
+              >
+                {t.hero.onlineSaleCta}
+              </a>
+              <a
+                href={DEALER_URL}
+                target="_blank"
+                rel="noopener"
+                className="rounded-full border border-ink-contrast/25 px-4 py-1.5 text-[13px] font-bold whitespace-nowrap text-ink-contrast no-underline transition-colors hover:border-ink-contrast/60"
+              >
+                {t.hero.dealerCta}
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -286,7 +307,7 @@ export default function Navbar() {
                   href={ONLINE_STORE_URL}
                   target="_blank"
                   rel="noopener"
-                  className="flex-1 rounded-full bg-accent px-4 py-2 text-center text-[13px] font-bold text-white no-underline"
+                  className="flex-1 rounded-full border border-accent px-4 py-2 text-center text-[13px] font-bold text-accent no-underline"
                 >
                   {t.hero.onlineSaleCta}
                 </a>
