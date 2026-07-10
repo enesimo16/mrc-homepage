@@ -9,6 +9,7 @@ interface ImageWithFallbackProps {
   fallback: React.ReactNode;
   sizes?: string;
   className?: string;
+  objectFit?: "cover" | "contain";
 }
 
 /**
@@ -21,6 +22,7 @@ export default function ImageWithFallback({
   fallback,
   sizes = "330px",
   className = "",
+  objectFit = "cover",
 }: ImageWithFallbackProps) {
   const [failed, setFailed] = useState(false);
 
@@ -32,7 +34,7 @@ export default function ImageWithFallback({
       alt={alt}
       fill
       sizes={sizes}
-      className={`object-cover ${className}`}
+      className={`${objectFit === "contain" ? "object-contain" : "object-cover"} object-center ${className}`}
       onError={() => setFailed(true)}
       unoptimized
     />

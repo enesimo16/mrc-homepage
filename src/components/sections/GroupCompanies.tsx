@@ -22,7 +22,8 @@ function CompanyLogo({ company }: { company: CompanyItem }) {
         src={`/companies/${company.slug}.png`}
         alt={company.name}
         sizes="150px"
-        className="object-contain p-3"
+        objectFit="contain"
+        className="p-3"
         fallback={
           <div className="flex h-full flex-col items-center justify-center gap-1">
             <span className="text-xl font-black text-white/85">{initials}</span>
