@@ -17,7 +17,7 @@ function CompanyLogo({ company }: { company: CompanyItem }) {
     .toUpperCase();
 
   return (
-    <div className="relative h-[84px] w-[150px] shrink-0 overflow-hidden rounded-xl border border-white/25 bg-white/10">
+    <div className="relative h-[84px] w-[150px] shrink-0 overflow-hidden rounded-xl border border-white/25 bg-accent-light/90">
       <ImageWithFallback
         src={`/companies/${company.slug}.png`}
         alt={company.name}
