@@ -7,8 +7,49 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import { NAV_IDS, SECTION_IDS, SECTION_TO_NAV } from "@/lib/constants";
+import { SOCIALS } from "@/components/ui/SocialIcons";
+import { NAV_IDS, SECTION_IDS, SECTION_TO_NAV, DEALER_URL, ONLINE_STORE_URL } from "@/lib/constants";
 import { LANGS, type Lang } from "@/lib/i18n";
+
+function TopUtilityBar() {
+  const { t } = useLanguage();
+
+  return (
+    <div className="hidden items-center gap-4 bg-ink px-4 py-2 sm:flex sm:px-6 lg:px-10">
+      <div className="flex items-center gap-2">
+        {SOCIALS.map(({ label, href, Icon }) => (
+          <a
+            key={label}
+            href={href}
+            aria-label={label}
+            title={label}
+            className="flex h-6.5 w-6.5 items-center justify-center rounded-full text-ink-contrast/60 transition-colors hover:text-ink-contrast"
+          >
+            <Icon />
+          </a>
+        ))}
+      </div>
+      <div className="ml-auto flex items-center gap-2">
+        <a
+          href={ONLINE_STORE_URL}
+          target="_blank"
+          rel="noopener"
+          className="rounded-full bg-accent px-4 py-1.5 font-mono text-[11px] font-bold tracking-[0.06em] whitespace-nowrap text-white no-underline transition-colors hover:bg-accent-hover"
+        >
+          {t.hero.onlineSaleCta}
+        </a>
+        <a
+          href={DEALER_URL}
+          target="_blank"
+          rel="noopener"
+          className="rounded-full border border-ink-contrast/25 px-4 py-1.5 font-mono text-[11px] font-bold tracking-[0.06em] whitespace-nowrap text-ink-contrast no-underline transition-colors hover:border-ink-contrast/60"
+        >
+          {t.hero.dealerCta}
+        </a>
+      </div>
+    </div>
+  );
+}
 
 function LogoChip({ className = "" }: { className?: string }) {
   return (
@@ -132,6 +173,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-hair bg-navbg backdrop-blur-md transition-colors duration-[450ms]">
+      <TopUtilityBar />
       <div className="mx-auto flex min-h-[56px] max-w-[1360px] items-center gap-3 px-4 py-2 sm:px-6 lg:gap-5 lg:px-10">
         <Link
           href="#top"
@@ -239,6 +281,24 @@ export default function Navbar() {
                   {navLabels[link.id]}
                 </Link>
               ))}
+              <div className="mt-1 flex items-center gap-2.5 px-3 pt-2">
+                <a
+                  href={ONLINE_STORE_URL}
+                  target="_blank"
+                  rel="noopener"
+                  className="flex-1 rounded-full bg-accent px-4 py-2 text-center text-[13px] font-bold text-white no-underline"
+                >
+                  {t.hero.onlineSaleCta}
+                </a>
+                <a
+                  href={DEALER_URL}
+                  target="_blank"
+                  rel="noopener"
+                  className="flex-1 rounded-full border border-line px-4 py-2 text-center text-[13px] font-bold text-ink no-underline"
+                >
+                  {t.hero.dealerCta}
+                </a>
+              </div>
               <div className="mt-2 flex items-center justify-between gap-3 border-t border-hair px-3 pt-3 pb-1 md:hidden">
                 <LangDropdown />
                 <Link

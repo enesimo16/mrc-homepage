@@ -20,6 +20,8 @@ export const fr: Dictionary = {
     sub: "De la plaque ABS brute au produit fini. Un seul groupe, un contrôle total.",
     ctaPrimary: "Devenir distributeur",
     ctaSecondary: "Découvrir notre gamme →",
+    dealerCta: "Revendeur",
+    onlineSaleCta: "Boutique en ligne",
     ticker: [
       "DE LA PLAQUE BRUTE AU PRODUIT FINI",
       "UN GROUPE, UN CONTRÔLE TOTAL",

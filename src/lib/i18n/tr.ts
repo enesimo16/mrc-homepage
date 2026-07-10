@@ -20,6 +20,8 @@ export const tr: Dictionary = {
     sub: "Ham ABS levhadan bitmiş ürüne. Tek grup, tam kontrol.",
     ctaPrimary: "Distribütör Olun",
     ctaSecondary: "Ürün Yelpazemizi Keşfedin →",
+    dealerCta: "Bayi",
+    onlineSaleCta: "Online Satış",
     ticker: [
       "HAM LEVHADAN BİTMİŞ ÜRÜNE",
       "TEK GRUP, TAM KONTROL",
@@ -115,7 +117,7 @@ export const tr: Dictionary = {
       {
         step: "ADIM 03",
         tag: "MRC OTOMOTİV",
-        title: "Bitmiş Ürün",
+        title: "Nihai Ürün",
         desc: "Aksesuarlar tasarlanır, termoformla şekillendirilir; kaplama ve montaj hatlarından çıkan 3.000+ SKU'luk katalog paketlenerek sevkiyata hazırlanır.",
         chips: ["TASARIM", "TERMOFORM", "KAPLAMA", "MONTAJ"],
         caption: "TERMOFORM · KAPLAMA · MONTAJ HATTI",

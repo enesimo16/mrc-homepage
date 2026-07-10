@@ -20,6 +20,8 @@ export const de: Dictionary = {
     sub: "Von der ABS-Rohplatte zum fertigen Produkt. Eine Gruppe, volle Kontrolle.",
     ctaPrimary: "Händler werden",
     ctaSecondary: "Produktpalette entdecken →",
+    dealerCta: "Händler",
+    onlineSaleCta: "Online-Shop",
     ticker: [
       "VON DER ROHPLATTE ZUM FERTIGEN PRODUKT",
       "EINE GRUPPE, VOLLE KONTROLLE",

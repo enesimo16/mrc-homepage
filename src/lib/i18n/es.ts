@@ -20,6 +20,8 @@ export const es: Dictionary = {
     sub: "De la plancha ABS en bruto al producto terminado. Un solo grupo, control total.",
     ctaPrimary: "Sea distribuidor",
     ctaSecondary: "Descubra nuestra gama →",
+    dealerCta: "Revendedor",
+    onlineSaleCta: "Tienda Online",
     ticker: [
       "DE LA PLANCHA BRUTA AL PRODUCTO TERMINADO",
       "UN GRUPO, CONTROL TOTAL",

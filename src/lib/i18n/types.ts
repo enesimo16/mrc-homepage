@@ -52,6 +52,8 @@ export interface Dictionary {
     sub: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    dealerCta: string;
+    onlineSaleCta: string;
     ticker: string[];
   };
   stats: {

@@ -67,15 +67,15 @@ function MapVisual({ pinLabel, isMobile }: { pinLabel: string; isMobile: boolean
   );
 }
 
-function AddressChip() {
+function AddressChip({ isMobile }: { isMobile: boolean }) {
   const { t } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8, delay: 2.1, ease: EASE }}
-      className="absolute bottom-6.5 left-6.5 z-[5] hidden max-w-[330px] rounded-2xl border border-hair bg-glass p-5.5 shadow-[0_16px_40px_rgba(20,21,23,0.14)] backdrop-blur-md min-[820px]:block"
+      transition={isMobile ? { duration: 0.6, delay: 0.15, ease: EASE } : { duration: 0.8, delay: 2.1, ease: EASE }}
+      className="relative z-[5] mx-4 mt-4 max-w-none rounded-2xl border border-hair bg-glass p-5.5 shadow-[0_16px_40px_rgba(20,21,23,0.14)] backdrop-blur-md min-[820px]:absolute min-[820px]:bottom-6.5 min-[820px]:left-6.5 min-[820px]:mx-0 min-[820px]:mt-0 min-[820px]:max-w-[330px]"
     >
       <div className="mb-2.5 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-accent">
         <span className="inline-block h-2 w-2 rounded-full bg-accent" />
@@ -248,7 +248,7 @@ export default function Contact() {
           <div className="relative h-[250px] w-full select-none bg-[#EDECE8] opacity-[0.92] overflow-hidden min-[820px]:absolute min-[820px]:inset-0 min-[820px]:h-full">
             <MapVisual pinLabel={t.contact.pin} isMobile={isMobile} />
           </div>
-          <AddressChip />
+          <AddressChip isMobile={isMobile} />
           <ContactCard isMobile={isMobile} />
         </div>
       </div>

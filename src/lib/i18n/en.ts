@@ -20,6 +20,8 @@ export const en: Dictionary = {
     sub: "From raw ABS sheet to finished product. One group, full control.",
     ctaPrimary: "Become a Distributor",
     ctaSecondary: "Explore Our Product Range →",
+    dealerCta: "Dealer",
+    onlineSaleCta: "Online Store",
     ticker: [
       "FROM RAW SHEET TO FINISHED PRODUCT",
       "ONE GROUP, FULL CONTROL",
