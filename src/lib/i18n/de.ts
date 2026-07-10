@@ -88,7 +88,7 @@ export const de: Dictionary = {
     body: "In dreißig Jahren entwickelte sich die Cappafe-Gruppe vom Pionier der Kunststoffproduktion zu einer [[vollständig vertikal integrierten]] Gruppe für Automobilzubehör. Heute erfolgt jeder Schritt — von der [[ABS-Rohplattenproduktion]] über fertiges Automobilzubehör bis zum [[globalen Vertrieb]] — [[innerhalb der Gruppe]].",
     marketsLabel: "BELIEFERTE MÄRKTE",
     markets: ["Großbritannien", "Türkei", "Balkan & Kosovo", "Europäische Union", "USA", "Asien"],
-    photoLabels: ["Werksfoto", "Foto der Produktionslinie", "Logistikfoto"],
+    photoLabels: ["Foto der Produktionslinie", "Werksfoto", "Logistikfoto"],
   },
   flow: {
     kicker: "VERTIKALE INTEGRATION",

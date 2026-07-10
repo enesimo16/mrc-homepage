@@ -88,7 +88,7 @@ export const fr: Dictionary = {
     body: "En trente ans, le groupe Cappafe est passé de pionnier de la production plastique à un groupe d'accessoires automobiles [[entièrement intégré verticalement]]. Aujourd'hui, chaque étape — de la [[production de plaques ABS brutes]] aux accessoires automobiles finis et à la [[distribution mondiale]] — est réalisée [[au sein du groupe]].",
     marketsLabel: "MARCHÉS DESSERVIS",
     markets: ["Royaume-Uni", "Turquie", "Balkans & Kosovo", "Union européenne", "États-Unis", "Asie"],
-    photoLabels: ["photo du site", "photo de la ligne de production", "photo logistique"],
+    photoLabels: ["photo de la ligne de production", "photo du site", "photo logistique"],
   },
   flow: {
     kicker: "INTÉGRATION VERTICALE",

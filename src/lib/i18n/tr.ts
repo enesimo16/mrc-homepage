@@ -88,7 +88,7 @@ export const tr: Dictionary = {
     body: "Cappafe grubu, otuz yıllık plastik üretim öncülüğünden [[tam dikey entegre]] bir otomotiv aksesuarları grubuna dönüştü. Bugün, [[ham ABS levha üretiminden]] bitmiş otomotiv aksesuarlarına ve [[global dağıtıma]] kadar her adım [[grup bünyesinde]] gerçekleştirilmektedir.",
     marketsLabel: "HİZMET VERİLEN PAZARLAR",
     markets: ["Birleşik Krallık", "Türkiye", "Balkanlar & Kosova", "Avrupa Birliği", "ABD", "Asya"],
-    photoLabels: ["tesis görseli", "üretim hattı görseli", "lojistik görseli"],
+    photoLabels: ["üretim hattı görseli", "tesis görseli", "lojistik görseli"],
   },
   flow: {
     kicker: "DİKEY ENTEGRASYON",

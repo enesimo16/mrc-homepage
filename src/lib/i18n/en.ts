@@ -88,7 +88,7 @@ export const en: Dictionary = {
     body: "Over thirty years, the Cappafe group evolved from a plastics manufacturing pioneer into a [[fully vertically integrated]] automotive accessories group. Today, every step — from [[raw ABS sheet production]] to finished automotive accessories and [[global distribution]] — happens [[within the group]].",
     marketsLabel: "MARKETS SERVED",
     markets: ["United Kingdom", "Türkiye", "Balkans & Kosovo", "European Union", "USA", "Asia"],
-    photoLabels: ["facility photo", "production line photo", "logistics photo"],
+    photoLabels: ["production line photo", "facility photo", "logistics photo"],
   },
   flow: {
     kicker: "VERTICAL INTEGRATION",
