@@ -39,7 +39,22 @@ function FacebookIcon() {
   );
 }
 
+function LinkedInIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="3.5" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="7.8" cy="8.2" r="1.4" fill="currentColor" />
+      <path d="M6.7 11h2.2v7H6.7v-7Z" fill="currentColor" />
+      <path
+        d="M11.2 11h2.1v1c.5-.7 1.3-1.2 2.3-1.2 1.8 0 2.9 1.2 2.9 3.3v3.9h-2.2v-3.6c0-1-.4-1.7-1.3-1.7-.7 0-1.2.5-1.4 1-.1.2-.1.4-.1.7v3.6h-2.2v-7Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 export const SOCIALS = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/cappafe/?originalSubdomain=tr", Icon: LinkedInIcon },
   { label: "Instagram", href: "#", Icon: InstagramIcon },
   { label: "YouTube", href: "#", Icon: YouTubeIcon },
   { label: "TikTok", href: "#", Icon: TikTokIcon },
