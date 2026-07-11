@@ -320,6 +320,19 @@ export default function Navbar() {
                   {t.hero.dealerCta}
                 </a>
               </div>
+              <div className="mt-1 flex items-center gap-2 px-3 pt-2">
+                {SOCIALS.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    title={label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <Icon />
+                  </a>
+                ))}
+              </div>
               <div className="mt-2 flex items-center justify-between gap-3 border-t border-hair px-3 pt-3 pb-1 md:hidden">
                 <LangDropdown />
                 <Link

@@ -172,8 +172,8 @@ export const ar: Dictionary = {
         name: "Cappafe",
         role: "العلامة والتوزيع العالمي",
         desc: "العلامة العالمية للمجموعة. تصل إلى أسواق المملكة المتحدة وتركيا والبلقان وكوسوفو والاتحاد الأوروبي والولايات المتحدة وآسيا عبر شبكة موزعين B2B.",
-        linkLabel: "← كن موزعاً",
-        linkHref: "#ortaklik",
+        linkLabel: "← CAPPAFE.COM.TR",
+        linkHref: "https://cappafe.com.tr",
       },
       {
         slug: "autoduro",

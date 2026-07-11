@@ -172,8 +172,8 @@ export const ru: Dictionary = {
         name: "Cappafe",
         role: "БРЕНД И ГЛОБАЛЬНАЯ ДИСТРИБУЦИЯ",
         desc: "Глобальный бренд группы. Выходит на рынки Великобритании, Турции, Балкан и Косово, ЕС, США и Азии через B2B-сеть дистрибьюторов.",
-        linkLabel: "СТАТЬ ДИСТРИБЬЮТОРОМ →",
-        linkHref: "#ortaklik",
+        linkLabel: "CAPPAFE.COM.TR →",
+        linkHref: "https://cappafe.com.tr",
       },
       {
         slug: "autoduro",

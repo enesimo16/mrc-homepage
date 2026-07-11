@@ -172,8 +172,8 @@ export const fr: Dictionary = {
         name: "Cappafe",
         role: "MARQUE & DISTRIBUTION MONDIALE",
         desc: "La marque mondiale du groupe. Atteint les marchés du Royaume-Uni, de Turquie, des Balkans & Kosovo, de l'UE, des États-Unis et d'Asie via un réseau de distributeurs B2B.",
-        linkLabel: "DEVENIR DISTRIBUTEUR →",
-        linkHref: "#ortaklik",
+        linkLabel: "CAPPAFE.COM.TR →",
+        linkHref: "https://cappafe.com.tr",
       },
       {
         slug: "autoduro",
