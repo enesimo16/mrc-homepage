@@ -13,7 +13,7 @@ function MapVisual({ pinLabel, isMobile }: { pinLabel: string; isMobile: boolean
   return (
     <motion.div
       className="absolute -inset-[10%]"
-      style={{ transformOrigin: "52% 46%" }}
+      style={{ transformOrigin: isMobile ? "50% 50%" : "52% 46%" }}
       initial={{ scale: 0.52 }}
       whileInView={{ scale: 1 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -39,13 +39,19 @@ function MapVisual({ pinLabel, isMobile }: { pinLabel: string; isMobile: boolean
         OSMANGAZİ
       </div>
 
-      <div className="absolute top-[46%] left-[52%] h-17.5 w-17.5 -translate-x-1/2 -translate-y-1/2">
+      <div
+        className={`absolute h-17.5 w-17.5 -translate-x-1/2 -translate-y-1/2 ${
+          isMobile ? "top-1/2 left-1/2" : "top-[46%] left-[52%]"
+        }`}
+      >
         <span className="animate-flow-pulse-ring absolute inset-0 rounded-full border-2 border-accent/50" />
         <span className="animate-flow-pulse-ring absolute inset-0 rounded-full border-2 border-accent/50 [animation-delay:1.1s]" />
       </div>
 
       <motion.div
-        className="absolute top-[46%] left-[52%] h-6.5 w-6.5 -translate-x-1/2 -translate-y-1/2"
+        className={`absolute h-6.5 w-6.5 -translate-x-1/2 -translate-y-1/2 ${
+          isMobile ? "top-1/2 left-1/2" : "top-[46%] left-[52%]"
+        }`}
         initial={{ opacity: 0, y: -70 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -159,7 +165,7 @@ function ContactCard({ isMobile }: { isMobile: boolean }) {
   return (
     <motion.div
       initial={isMobile ? { opacity: 0, y: 20 } : { opacity: 0, x: 70 }}
-      whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, x: 0 }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={isMobile ? { duration: 0.6, delay: 0.1, ease: EASE } : { duration: 0.9, delay: 1.9, ease: EASE }}
       className="relative z-[6] m-4 rounded-[20px] border border-hair bg-glass p-6 shadow-[0_20px_50px_rgba(20,21,23,0.12)] backdrop-blur-lg min-[820px]:absolute min-[820px]:right-6.5 min-[820px]:top-1/2 min-[820px]:bottom-auto min-[820px]:left-auto min-[820px]:w-[min(400px,calc(100%-52px))] min-[820px]:-translate-y-1/2 min-[820px]:m-0 min-[820px]:p-7"

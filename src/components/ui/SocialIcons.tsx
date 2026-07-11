@@ -55,8 +55,8 @@ function LinkedInIcon() {
 
 export const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/cappafe/?originalSubdomain=tr", Icon: LinkedInIcon },
-  { label: "Instagram", href: "#", Icon: InstagramIcon },
+  { label: "Instagram", href: "https://www.instagram.com/cappafe/", Icon: InstagramIcon },
   { label: "YouTube", href: "#", Icon: YouTubeIcon },
-  { label: "TikTok", href: "#", Icon: TikTokIcon },
-  { label: "Facebook", href: "#", Icon: FacebookIcon },
+  { label: "TikTok", href: "https://www.tiktok.com/@cappafe.car.parts", Icon: TikTokIcon },
+  { label: "Facebook", href: "https://www.facebook.com/cappafe/?locale=tr_TR", Icon: FacebookIcon },
 ];
