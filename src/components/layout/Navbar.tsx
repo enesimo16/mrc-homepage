@@ -87,7 +87,7 @@ function LogoChip({ className = "" }: { className?: string }) {
   );
 }
 
-function LangDropdown() {
+function LangDropdown({ openFrom = "end" }: { openFrom?: "start" | "end" }) {
   const { t, lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -141,8 +141,8 @@ function LangDropdown() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.18, ease: [0.2, 0.7, 0.2, 1] }}
-            className={`absolute z-[70] mt-2 w-36 rounded-2xl border border-line bg-glass py-1.5 shadow-[0_12px_30px_rgba(20,21,23,0.15)] backdrop-blur-md ${
-              isRtl ? "left-0 origin-top-left" : "right-0 origin-top-right"
+            className={`absolute z-[70] mt-2 w-36 origin-top rounded-2xl border border-line bg-glass py-1.5 shadow-[0_12px_30px_rgba(20,21,23,0.15)] backdrop-blur-md ${
+              openFrom === "start" ? "start-0" : "end-0"
             }`}
           >
             <div className="flex flex-col gap-0.5 px-1">
@@ -334,7 +334,7 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="mt-2 flex items-center justify-between gap-3 border-t border-hair px-3 pt-3 pb-1 md:hidden">
-                <LangDropdown />
+                <LangDropdown openFrom="start" />
                 <Link
                   href="#ortaklik"
                   onClick={() => setMobileOpen(false)}
