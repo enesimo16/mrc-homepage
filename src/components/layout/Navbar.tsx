@@ -178,7 +178,7 @@ function LangDropdown() {
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const { activeSection, progress } = useScrollSpy(SECTION_IDS);
   const activeNavIndex = SECTION_TO_NAV[activeSection];
   const [mobileOpen, setMobileOpen] = useState(false);
