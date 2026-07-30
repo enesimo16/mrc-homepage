@@ -47,12 +47,14 @@ export const metadata: Metadata = {
     title: "Cappafe — Dikey Entegre Otomotiv Dış Aksesuar Üreticisi",
     description:
       "Ham ABS levhadan bitmiş ürüne. Tek grup, tam kontrol. 3.000+ ürün SKU, ISO 9001 / 14001 / 45001.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Cappafe" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cappafe — Dikey Entegre Otomotiv Dış Aksesuar Üreticisi",
     description:
       "Ham ABS levhadan bitmiş ürüne. Tek grup, tam kontrol. 3.000+ ürün SKU.",
+    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -82,6 +84,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Cappafe",
   url: siteUrl,
+  logo: `${siteUrl}/logo-new.png`,
   description:
     "Dikey entegre otomotiv dış aksesuar üreticisi. Kaput deflektörü, rüzgar deflektörü, dodik ve ticari araç aksesuarları.",
   address: {
@@ -91,7 +94,14 @@ const organizationJsonLd = {
     addressCountry: "TR",
   },
   email: "info@cappafe.com",
-  sameAs: ["https://uk.cappafe.com"],
+  sameAs: [
+    "https://www.cappafe.com.tr",
+    "https://uk.cappafe.com",
+    "https://www.linkedin.com/company/cappafe/?originalSubdomain=tr",
+    "https://www.instagram.com/cappafe/",
+    "https://www.tiktok.com/@cappafe.car.parts",
+    "https://www.facebook.com/cappafe/?locale=tr_TR",
+  ],
 };
 
 export default function RootLayout({

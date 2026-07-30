@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SECTION_IDS } from "@/lib/constants";
@@ -15,18 +15,8 @@ import { SECTION_IDS } from "@/lib/constants";
 export default function ToTopButton() {
   const { progress, scrollY } = useScrollSpy(SECTION_IDS);
   const { t } = useLanguage();
-  const [pulse, setPulse] = useState(false);
 
   const visible = scrollY > 400;
-
-  // Trigger a 1-cycle red pulse when progress crosses into the danger zone
-  useEffect(() => {
-    if (progress >= 0.85) {
-      setPulse(true);
-      const id = setTimeout(() => setPulse(false), 700);
-      return () => clearTimeout(id);
-    }
-  }, [progress >= 0.85]);
 
   const handleClick = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

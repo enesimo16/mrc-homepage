@@ -10,10 +10,20 @@ function isLang(value: string | null): value is Lang {
   return value !== null && (LANGS as string[]).includes(value);
 }
 
+/** Best-effort match of the visitor's browser language against our supported list. */
+function detectBrowserLang(): Lang {
+  const candidates = navigator.languages?.length ? navigator.languages : [navigator.language];
+  for (const raw of candidates) {
+    const code = raw?.toLowerCase().split("-")[0] ?? "";
+    if (isLang(code)) return code;
+  }
+  return "tr";
+}
+
 function getSnapshot(): Lang {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return isLang(stored) ? stored : "tr";
+    return isLang(stored) ? stored : detectBrowserLang();
   } catch {
     return "tr";
   }

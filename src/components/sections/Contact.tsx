@@ -155,7 +155,7 @@ function ContactCard({ isMobile }: { isMobile: boolean }) {
       } else {
         setErrorMsg(result.message || "Bir hata oluştu. Lütfen tekrar deneyin.");
       }
-    } catch (err: any) {
+    } catch {
       setErrorMsg("Bağlantı hatası. Lütfen internetinizi kontrol edin.");
     } finally {
       setLoading(false);
