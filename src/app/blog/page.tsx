@@ -40,13 +40,23 @@ export default async function BlogIndexPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block rounded-2xl border border-line bg-bg2 p-6 no-underline transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-accent"
+                className="block overflow-hidden rounded-2xl border border-line bg-bg2 no-underline transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-accent"
               >
-                <h2 className="mb-2 text-xl font-extrabold text-ink">{post.title}</h2>
-                {post.excerpt && <p className="text-sm text-muted">{post.excerpt}</p>}
-                <span className="mt-4 block font-mono text-xs text-soft">
-                  {new Date(post.created_at).toLocaleDateString("tr-TR")}
-                </span>
+                {post.cover_image && (
+                  // eslint-disable-next-line @next/next/no-img-element -- arbitrary external URLs from the ERP, no domain allowlist to maintain
+                  <img
+                    src={post.cover_image}
+                    alt={post.title}
+                    className="h-[180px] w-full object-cover"
+                  />
+                )}
+                <div className="p-6">
+                  <h2 className="mb-2 text-xl font-extrabold text-ink">{post.title}</h2>
+                  {post.excerpt && <p className="text-sm text-muted">{post.excerpt}</p>}
+                  <span className="mt-4 block font-mono text-xs text-soft">
+                    {new Date(post.created_at).toLocaleDateString("tr-TR")}
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

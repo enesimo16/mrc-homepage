@@ -9,13 +9,14 @@ export const dynamic = "force-dynamic";
 interface PostRow {
   title: string;
   content: string;
+  cover_image: string | null;
   created_at: string;
 }
 
 async function getPost(slug: string): Promise<PostRow | null> {
   const pool = getPool();
   const [rows] = await pool.query(
-    "SELECT title, content, created_at FROM blog_posts WHERE slug = ? AND published = TRUE LIMIT 1",
+    "SELECT title, content, cover_image, created_at FROM blog_posts WHERE slug = ? AND published = TRUE LIMIT 1",
     [slug]
   );
   const list = rows as PostRow[];
@@ -37,6 +38,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <span className="mb-8 block font-mono text-xs text-soft">
           {new Date(post.created_at).toLocaleDateString("tr-TR")}
         </span>
+        {post.cover_image && (
+          // eslint-disable-next-line @next/next/no-img-element -- arbitrary external URLs from the ERP, no domain allowlist to maintain
+          <img
+            src={post.cover_image}
+            alt={post.title}
+            className="mb-8 h-auto w-full rounded-2xl object-cover"
+          />
+        )}
         <div className="max-w-none text-[15.5px] leading-[1.75] whitespace-pre-wrap text-ink">
           {post.content}
         </div>
