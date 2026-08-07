@@ -152,6 +152,12 @@ function ContactCard({ isMobile }: { isMobile: boolean }) {
       if (response.ok && result.success) {
         setSent(true);
         form.reset();
+        fetch("/api/emails/log", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ formType: "contact", ...payload }),
+          keepalive: true,
+        }).catch(() => {});
       } else {
         setErrorMsg(result.message || "Bir hata oluştu. Lütfen tekrar deneyin.");
       }

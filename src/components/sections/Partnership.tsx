@@ -59,6 +59,12 @@ export default function Partnership() {
       if (response.ok && result.success) {
         setSent(true);
         form.reset();
+        fetch("/api/emails/log", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ formType: "partnership", ...payload }),
+          keepalive: true,
+        }).catch(() => {});
       } else {
         setErrorMsg(result.message || "Bir hata oluştu. Lütfen tekrar deneyin.");
       }

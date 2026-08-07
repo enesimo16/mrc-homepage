@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/hooks/useLanguage";
 import { WHATSAPP_URL } from "@/lib/constants";
+import { trackEvent } from "@/lib/track";
 
 export default function WhatsAppButton() {
   const { t } = useLanguage();
@@ -11,6 +12,7 @@ export default function WhatsAppButton() {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener"
+      onClick={() => trackEvent("whatsapp_click")}
       aria-label={t.waAria}
       className="fixed bottom-6 left-6 z-[60] flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#25D366] transition-[transform,box-shadow,background-color] duration-300 hover:scale-110 active:scale-95 animate-wa-wobble-glow hover:[animation-play-state:paused]"
     >

@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { LanguageProvider } from "@/hooks/useLanguage";
 import ParticleBackground from "@/components/background/ParticleBackground";
+import PageViewTracker from "@/components/PageViewTracker";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -124,6 +125,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LanguageProvider>
             <ParticleBackground />
+            <PageViewTracker />
             {children}
           </LanguageProvider>
         </ThemeProvider>
