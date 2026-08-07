@@ -241,6 +241,11 @@ export const tr: Dictionary = {
     sent: "✓ MESAJINIZ ALINDI — TEŞEKKÜRLER",
     pin: "CAPPAFE FABRİKA",
   },
+  blog: {
+    title: "Blog",
+    empty: "Henüz yayınlanmış bir yazı yok.",
+    back: "← Blog'a dön",
+  },
   footer: {
     about:
       "Dikey entegre otomotiv dış aksesuar üreticisi. Ham ABS levhadan bitmiş ürüne, tek grup, tam kontrol.",

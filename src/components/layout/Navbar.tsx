@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -182,6 +183,10 @@ export default function Navbar() {
   const { activeSection, progress } = useScrollSpy(SECTION_IDS);
   const activeNavIndex = SECTION_TO_NAV[activeSection];
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const anchorHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
+  const isBlogActive = pathname?.startsWith("/blog") ?? false;
 
   const navLabels: Record<string, string> = {
     top: t.nav.home,
@@ -197,10 +202,11 @@ export default function Navbar() {
       <TopUtilityBar />
       <div className="mx-auto flex min-h-[56px] max-w-[1360px] items-center gap-3 px-4 py-2 sm:px-6 lg:gap-5 lg:px-10">
         <Link
-          href="#top"
+          href={isHome ? "#top" : "/#top"}
           aria-label="Cappafe"
           className="shrink-0 no-underline"
           onClick={(e) => {
+            if (!isHome) return;
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
             window.history.pushState(null, "", "#top");
@@ -211,11 +217,11 @@ export default function Navbar() {
 
         <nav className="relative ml-auto hidden items-center gap-4 lg:flex xl:gap-6" aria-label={t.nav.menuAria}>
           {NAV_IDS.map((link) => {
-            const isActive = link.navIndex === activeNavIndex;
+            const isActive = isHome && link.navIndex === activeNavIndex;
             return (
               <Link
                 key={link.id}
-                href={`#${link.id}`}
+                href={anchorHref(link.id)}
                 className={`relative py-1.5 text-[13px] whitespace-nowrap no-underline transition-colors xl:text-sm ${
                   isActive ? "font-bold text-accent" : "font-medium text-muted hover:text-accent"
                 }`}
@@ -231,6 +237,21 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <Link
+            href="/blog"
+            className={`relative py-1.5 text-[13px] whitespace-nowrap no-underline transition-colors xl:text-sm ${
+              isBlogActive ? "font-bold text-accent" : "font-medium text-muted hover:text-accent"
+            }`}
+          >
+            {t.blog.title}
+            {isBlogActive && (
+              <motion.span
+                layoutId="nav-underline"
+                className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded-full bg-accent"
+                transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+              />
+            )}
+          </Link>
         </nav>
 
         <button
@@ -260,7 +281,7 @@ export default function Navbar() {
         </div>
 
         <Link
-          href="#ortaklik"
+          href={anchorHref("ortaklik")}
           className="btn-shimmer-wrap hidden shrink-0 rounded-full bg-ink px-6 py-2.5 text-[13px] font-bold whitespace-nowrap text-ink-contrast no-underline transition-all hover:bg-accent lg:inline-block"
         >
           {t.nav.cta}
@@ -270,7 +291,7 @@ export default function Navbar() {
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={t.nav.menuAria}
           aria-expanded={mobileOpen}
-          className="flex h-9 w-9 shrink-0 flex-col items-center justify-center gap-1.5 rounded-full border border-line lg:hidden"
+          className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-1.5 rounded-full border border-line lg:hidden"
         >
           <span className={`block h-0.5 w-4 bg-ink transition-transform ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
           <span className={`block h-0.5 w-4 bg-ink transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
@@ -293,15 +314,24 @@ export default function Navbar() {
               {NAV_IDS.map((link) => (
                 <Link
                   key={link.id}
-                  href={`#${link.id}`}
+                  href={anchorHref(link.id)}
                   onClick={() => setMobileOpen(false)}
                   className={`rounded-lg px-3 py-2.5 text-sm no-underline ${
-                    link.navIndex === activeNavIndex ? "bg-hair font-bold text-accent" : "text-ink"
+                    isHome && link.navIndex === activeNavIndex ? "bg-hair font-bold text-accent" : "text-ink"
                   }`}
                 >
                   {navLabels[link.id]}
                 </Link>
               ))}
+              <Link
+                href="/blog"
+                onClick={() => setMobileOpen(false)}
+                className={`rounded-lg px-3 py-2.5 text-sm no-underline ${
+                  isBlogActive ? "bg-hair font-bold text-accent" : "text-ink"
+                }`}
+              >
+                {t.blog.title}
+              </Link>
               <div className="mt-1 flex items-center gap-2.5 px-3 pt-2">
                 <a
                   href={ONLINE_STORE_URL}
@@ -327,7 +357,7 @@ export default function Navbar() {
                     href={href}
                     aria-label={label}
                     title={label}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent"
                   >
                     <Icon />
                   </a>
@@ -336,7 +366,7 @@ export default function Navbar() {
               <div className="mt-2 flex items-center justify-between gap-3 border-t border-hair px-3 pt-3 pb-1 md:hidden">
                 <LangDropdown openFrom="start" />
                 <Link
-                  href="#ortaklik"
+                  href={anchorHref("ortaklik")}
                   onClick={() => setMobileOpen(false)}
                   className="rounded-full bg-ink px-5 py-2.5 text-[13px] font-bold text-ink-contrast no-underline"
                 >

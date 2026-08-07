@@ -237,6 +237,11 @@ export const en: Dictionary = {
     sent: "✓ MESSAGE RECEIVED — THANK YOU",
     pin: "CAPPAFE FACTORY",
   },
+  blog: {
+    title: "Blog",
+    empty: "No posts published yet.",
+    back: "← Back to blog",
+  },
   footer: {
     about:
       "Vertically integrated automotive exterior accessories manufacturer. From raw ABS sheet to finished product — one group, full control.",

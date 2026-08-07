@@ -130,6 +130,11 @@ export interface Dictionary {
     sent: string;
     pin: string;
   };
+  blog: {
+    title: string;
+    empty: string;
+    back: string;
+  };
   footer: {
     about: string;
     menu: string;

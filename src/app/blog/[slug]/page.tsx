@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import BlogPostClient from "@/components/blog/BlogPostClient";
 import { getPool } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +20,7 @@ async function getPost(slug: string): Promise<PostRow | null> {
     "SELECT title, content, cover_image, created_at FROM blog_posts WHERE slug = ? AND published = TRUE LIMIT 1",
     [slug]
   );
-  const list = rows as PostRow[];
+  const list = JSON.parse(JSON.stringify(rows)) as PostRow[];
   return list[0] ?? null;
 }
 
@@ -31,25 +32,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <>
       <Navbar />
-      <main className="relative z-[1] mx-auto max-w-[760px] px-5 pt-[140px] pb-24 sm:px-6 lg:px-10">
-        <h1 className="mb-4 text-[clamp(1.8rem,4vw,2.8rem)] font-black tracking-[-0.02em] text-ink uppercase">
-          {post.title}
-        </h1>
-        <span className="mb-8 block font-mono text-xs text-soft">
-          {new Date(post.created_at).toLocaleDateString("tr-TR")}
-        </span>
-        {post.cover_image && (
-          // eslint-disable-next-line @next/next/no-img-element -- arbitrary external URLs from the ERP, no domain allowlist to maintain
-          <img
-            src={post.cover_image}
-            alt={post.title}
-            className="mb-8 h-auto w-full rounded-2xl object-cover"
-          />
-        )}
-        <div className="max-w-none text-[15.5px] leading-[1.75] whitespace-pre-wrap text-ink">
-          {post.content}
-        </div>
-      </main>
+      <BlogPostClient post={post} />
       <WhatsAppButton />
       <Footer />
     </>

@@ -237,6 +237,11 @@ export const fr: Dictionary = {
     sent: "✓ MESSAGE REÇU — MERCI",
     pin: "USINE CAPPAFE",
   },
+  blog: {
+    title: "Blog",
+    empty: "Aucun article publié pour le moment.",
+    back: "← Retour au blog",
+  },
   footer: {
     about:
       "Fabricant d'accessoires extérieurs automobiles à intégration verticale. De la plaque ABS brute au produit fini — un groupe, un contrôle total.",

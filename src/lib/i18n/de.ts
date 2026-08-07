@@ -237,6 +237,11 @@ export const de: Dictionary = {
     sent: "✓ NACHRICHT ERHALTEN — VIELEN DANK",
     pin: "CAPPAFE WERK",
   },
+  blog: {
+    title: "Blog",
+    empty: "Noch keine veröffentlichten Beiträge.",
+    back: "← Zurück zum Blog",
+  },
   footer: {
     about:
       "Vertikal integrierter Hersteller von Automobil-Außenzubehör. Von der ABS-Rohplatte zum fertigen Produkt — eine Gruppe, volle Kontrolle.",

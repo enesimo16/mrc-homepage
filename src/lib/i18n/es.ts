@@ -237,6 +237,11 @@ export const es: Dictionary = {
     sent: "✓ MENSAJE RECIBIDO — GRACIAS",
     pin: "FÁBRICA CAPPAFE",
   },
+  blog: {
+    title: "Blog",
+    empty: "Aún no hay artículos publicados.",
+    back: "← Volver al blog",
+  },
   footer: {
     about:
       "Fabricante de accesorios exteriores de automoción integrado verticalmente. De la plancha ABS en bruto al producto terminado: un grupo, control total.",

@@ -80,7 +80,7 @@ export default function Footer() {
                     href={href}
                     aria-label={label}
                     title={label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-bg2 text-ink transition-[background,color,border-color,transform,box-shadow] duration-300 hover:-translate-y-[3px] hover:border-accent hover:bg-accent hover:text-white hover:shadow-[0_10px_24px_rgba(210,35,42,0.35)]"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-bg2 text-ink transition-[background,color,border-color,transform,box-shadow] duration-300 hover:-translate-y-[3px] hover:border-accent hover:bg-accent hover:text-white hover:shadow-[0_10px_24px_rgba(210,35,42,0.35)]"
                   >
                     <Icon />
                   </a>
