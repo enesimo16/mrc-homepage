@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
 import { getPool } from "@/lib/db";
+import { isRateLimited, clientIp } from "@/lib/rateLimit";
 
 /**
  * Public endpoint the site itself calls to log page views and UI events
  * (WhatsApp click, form submit, etc). Never returns visitor data - write-only.
  */
 export async function POST(req: Request) {
+  const ip = clientIp(req);
+  if (isRateLimited(`track:${ip}`, 60, 60_000)) {
+    return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
+  }
+
   let body: any;
   try {
     body = await req.json();
@@ -13,7 +19,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "invalid_json" }, { status: 400 });
   }
 
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
   const pool = getPool();
 
   try {

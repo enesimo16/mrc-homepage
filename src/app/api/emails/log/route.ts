@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
 import { getPool } from "@/lib/db";
+import { isRateLimited, clientIp } from "@/lib/rateLimit";
 
 /**
  * Public endpoint the site calls right after a form submits successfully,
  * so we keep our own copy of what was sent (web3forms only emails it to us).
  */
 export async function POST(req: Request) {
+  if (isRateLimited(`email:${clientIp(req)}`, 10, 10 * 60_000)) {
+    return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
+  }
+
   let body: any;
   try {
     body = await req.json();
