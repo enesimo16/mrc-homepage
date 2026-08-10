@@ -11,6 +11,7 @@ import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { SOCIALS } from "@/components/ui/SocialIcons";
 import { NAV_IDS, SECTION_IDS, SECTION_TO_NAV, DEALER_URL, ONLINE_STORE_URL } from "@/lib/constants";
 import { LANGS, type Lang } from "@/lib/i18n";
+import { trackEvent } from "@/lib/track";
 
 function TopUtilityBar() {
   const { t } = useLanguage();
@@ -42,6 +43,7 @@ function TopUtilityBar() {
                   href={href}
                   aria-label={label}
                   title={label}
+                  onClick={() => trackEvent("social_click", { platform: label })}
                   className="flex h-6.5 w-6.5 items-center justify-center rounded-full text-ink-contrast/60 transition-colors hover:text-ink-contrast"
                 >
                   <Icon />
@@ -53,6 +55,7 @@ function TopUtilityBar() {
                 href={ONLINE_STORE_URL}
                 target="_blank"
                 rel="noopener"
+                onClick={() => trackEvent("online_store_click", { location: "header" })}
                 className="rounded-full border border-accent-light/50 px-4 py-1.5 text-[13px] font-bold whitespace-nowrap text-accent-light no-underline transition-colors hover:border-accent-light hover:bg-accent-light/10"
               >
                 {t.hero.onlineSaleCta}
@@ -61,6 +64,7 @@ function TopUtilityBar() {
                 href={DEALER_URL}
                 target="_blank"
                 rel="noopener"
+                onClick={() => trackEvent("dealer_click", { location: "header" })}
                 className="rounded-full border border-ink-contrast/25 px-4 py-1.5 text-[13px] font-bold whitespace-nowrap text-ink-contrast no-underline transition-colors hover:border-ink-contrast/60"
               >
                 {t.hero.dealerCta}
@@ -153,6 +157,7 @@ function LangDropdown({ openFrom = "end" }: { openFrom?: "start" | "end" }) {
                   <button
                     key={l}
                     onClick={() => {
+                      trackEvent("lang_switch", { from: lang, to: l });
                       setLang(l);
                       setOpen(false);
                     }}
@@ -222,6 +227,7 @@ export default function Navbar() {
               <Link
                 key={link.id}
                 href={anchorHref(link.id)}
+                onClick={() => trackEvent("nav_click", { section: link.id })}
                 className={`relative py-1.5 text-[13px] whitespace-nowrap no-underline transition-colors xl:text-sm ${
                   isActive ? "font-bold text-accent" : "font-medium text-muted hover:text-accent"
                 }`}
@@ -239,6 +245,7 @@ export default function Navbar() {
           })}
           <Link
             href="/blog"
+            onClick={() => trackEvent("nav_click", { section: "blog" })}
             className={`relative py-1.5 text-[13px] whitespace-nowrap no-underline transition-colors xl:text-sm ${
               isBlogActive ? "font-bold text-accent" : "font-medium text-muted hover:text-accent"
             }`}
@@ -255,7 +262,10 @@ export default function Navbar() {
         </nav>
 
         <button
-          onClick={toggleTheme}
+          onClick={() => {
+            trackEvent("theme_toggle", { to: theme === "dark" ? "light" : "dark" });
+            toggleTheme();
+          }}
           aria-label={t.nav.themeAria}
           className="ml-auto relative flex h-[34px] w-[62px] shrink-0 cursor-pointer items-center rounded-full border border-line bg-bg2 px-[5px] transition-all duration-300 hover:border-accent lg:ml-0"
         >
@@ -282,6 +292,7 @@ export default function Navbar() {
 
         <Link
           href={anchorHref("ortaklik")}
+          onClick={() => trackEvent("cta_click", { label: "distributor", location: "header" })}
           className="btn-shimmer-wrap hidden shrink-0 rounded-full bg-ink px-6 py-2.5 text-[13px] font-bold whitespace-nowrap text-ink-contrast no-underline transition-all hover:bg-accent lg:inline-block"
         >
           {t.nav.cta}
@@ -315,7 +326,10 @@ export default function Navbar() {
                 <Link
                   key={link.id}
                   href={anchorHref(link.id)}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    trackEvent("nav_click", { section: link.id, location: "mobile" });
+                    setMobileOpen(false);
+                  }}
                   className={`rounded-lg px-3 py-2.5 text-sm no-underline ${
                     isHome && link.navIndex === activeNavIndex ? "bg-hair font-bold text-accent" : "text-ink"
                   }`}
@@ -325,7 +339,10 @@ export default function Navbar() {
               ))}
               <Link
                 href="/blog"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  trackEvent("nav_click", { section: "blog", location: "mobile" });
+                  setMobileOpen(false);
+                }}
                 className={`rounded-lg px-3 py-2.5 text-sm no-underline ${
                   isBlogActive ? "bg-hair font-bold text-accent" : "text-ink"
                 }`}
@@ -337,6 +354,7 @@ export default function Navbar() {
                   href={ONLINE_STORE_URL}
                   target="_blank"
                   rel="noopener"
+                  onClick={() => trackEvent("online_store_click", { location: "mobile_menu" })}
                   className="flex-1 rounded-full border border-accent px-4 py-2 text-center text-[13px] font-bold text-accent no-underline"
                 >
                   {t.hero.onlineSaleCta}
@@ -345,6 +363,7 @@ export default function Navbar() {
                   href={DEALER_URL}
                   target="_blank"
                   rel="noopener"
+                  onClick={() => trackEvent("dealer_click", { location: "mobile_menu" })}
                   className="flex-1 rounded-full border border-line px-4 py-2 text-center text-[13px] font-bold text-ink no-underline"
                 >
                   {t.hero.dealerCta}
@@ -357,6 +376,7 @@ export default function Navbar() {
                     href={href}
                     aria-label={label}
                     title={label}
+                    onClick={() => trackEvent("social_click", { platform: label, location: "mobile_menu" })}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent"
                   >
                     <Icon />
@@ -367,7 +387,10 @@ export default function Navbar() {
                 <LangDropdown openFrom="start" />
                 <Link
                   href={anchorHref("ortaklik")}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    trackEvent("cta_click", { label: "distributor", location: "mobile_menu" });
+                    setMobileOpen(false);
+                  }}
                   className="rounded-full bg-ink px-5 py-2.5 text-[13px] font-bold text-ink-contrast no-underline"
                 >
                   {t.nav.cta}

@@ -23,15 +23,41 @@ export async function POST(req: Request) {
 
   try {
     if (body.kind === "pageview") {
+      const path = String(body.path ?? "").slice(0, 500);
+      let utmSource: string | null = null;
+      let utmMedium: string | null = null;
+      let utmCampaign: string | null = null;
+      try {
+        const qs = new URLSearchParams(path.split("?")[1] ?? "");
+        utmSource = qs.get("utm_source")?.slice(0, 128) ?? null;
+        utmMedium = qs.get("utm_medium")?.slice(0, 128) ?? null;
+        utmCampaign = qs.get("utm_campaign")?.slice(0, 128) ?? null;
+      } catch {
+        // malformed query string - ignore utm parsing
+      }
+
+      // Vercel injects these automatically on every request, no external geoip needed
+      const country = req.headers.get("x-vercel-ip-country");
+      const city = req.headers.get("x-vercel-ip-city");
+      const region = req.headers.get("x-vercel-ip-country-region");
+
       await pool.query(
-        "INSERT INTO page_views (path, referrer, user_agent, ip, lang, session_id) VALUES (?, ?, ?, ?, ?, ?)",
+        `INSERT INTO page_views
+          (path, referrer, user_agent, ip, lang, session_id, country, city, region, utm_source, utm_medium, utm_campaign)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
-          String(body.path ?? "").slice(0, 500),
+          path,
           body.referrer ? String(body.referrer).slice(0, 500) : null,
           req.headers.get("user-agent")?.slice(0, 500) ?? null,
           ip,
           body.lang ? String(body.lang).slice(0, 8) : null,
           body.sessionId ? String(body.sessionId).slice(0, 64) : null,
+          country ?? null,
+          city ? decodeURIComponent(city).slice(0, 128) : null,
+          region ?? null,
+          utmSource,
+          utmMedium,
+          utmCampaign,
         ]
       );
     } else if (body.kind === "event") {

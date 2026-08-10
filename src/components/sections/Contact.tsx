@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { trackEvent } from "@/lib/track";
 import { COMPANY_ADDRESS, CONTACT_EMAIL } from "@/lib/constants";
 
 const EASE = [0.2, 0.7, 0.2, 1] as const;
@@ -93,13 +94,18 @@ function AddressChip({ isMobile }: { isMobile: boolean }) {
         {COMPANY_ADDRESS.line2}
       </div>
       <div className="mt-2.5 flex flex-wrap gap-3.5">
-        <a href={`mailto:${CONTACT_EMAIL}`} className="text-[13px] font-bold text-accent no-underline">
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          onClick={() => trackEvent("email_click", { location: "contact" })}
+          className="text-[13px] font-bold text-accent no-underline"
+        >
           {CONTACT_EMAIL}
         </a>
         <a
           href={COMPANY_ADDRESS.mapsUrl}
           target="_blank"
           rel="noopener"
+          onClick={() => trackEvent("maps_click")}
           className="text-[13px] font-semibold text-muted no-underline hover:text-accent"
         >
           {t.contact.maps}

@@ -6,6 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import Marquee from "@/components/ui/Marquee";
 import ImageWithFallback from "@/components/ui/ImageWithFallback";
 import { useLanguage } from "@/hooks/useLanguage";
+import { trackEvent } from "@/lib/track";
 import type { CompanyItem } from "@/lib/i18n";
 
 function CompanyLogo({ company }: { company: CompanyItem }) {
@@ -179,7 +180,12 @@ export default function GroupCompanies() {
             isOpen={isRowOpen(i)}
             onEnter={() => setHovered(i)}
             onLeave={() => setHovered((h) => (h === i ? null : h))}
-            onToggle={() => setPinned((p) => (p === i ? null : i))}
+            onToggle={() =>
+              setPinned((p) => {
+                if (p !== i) trackEvent("company_open", { company: company.slug });
+                return p === i ? null : i;
+              })
+            }
           />
         ))}
       </div>

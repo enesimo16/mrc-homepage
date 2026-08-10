@@ -14,7 +14,8 @@ export async function GET(req: Request) {
 
   const pool = getPool();
   const params: any[] = [];
-  let query = "SELECT id, path, referrer, user_agent, ip, lang, session_id, created_at FROM page_views";
+  let query =
+    "SELECT id, path, referrer, user_agent, ip, lang, session_id, country, city, region, utm_source, utm_medium, utm_campaign, created_at FROM page_views";
   if (since) {
     query += " WHERE created_at >= ?";
     params.push(since);

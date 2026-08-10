@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Marquee from "@/components/ui/Marquee";
 import { SOCIALS } from "@/components/ui/SocialIcons";
 import { useLanguage } from "@/hooks/useLanguage";
+import { trackEvent } from "@/lib/track";
 import { NAV_IDS, COMPANY_ADDRESS, CONTACT_EMAIL } from "@/lib/constants";
 
 /** Two slightly-tilted overlapping ticker bands (dark + red). */
@@ -43,6 +45,8 @@ function BandTicker() {
 
 export default function Footer() {
   const { t } = useLanguage();
+  const pathname = usePathname();
+  const anchorHref = (id: string) => (pathname === "/" ? `#${id}` : `/#${id}`);
 
   const navLabels: Record<string, string> = {
     top: t.nav.home,
@@ -80,6 +84,7 @@ export default function Footer() {
                     href={href}
                     aria-label={label}
                     title={label}
+                    onClick={() => trackEvent("social_click", { platform: label, location: "footer" })}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-bg2 text-ink transition-[background,color,border-color,transform,box-shadow] duration-300 hover:-translate-y-[3px] hover:border-accent hover:bg-accent hover:text-white hover:shadow-[0_10px_24px_rgba(210,35,42,0.35)]"
                   >
                     <Icon />
@@ -96,7 +101,8 @@ export default function Footer() {
                 {NAV_IDS.map((link) => (
                   <Link
                     key={link.id}
-                    href={`#${link.id}`}
+                    href={anchorHref(link.id)}
+                    onClick={() => trackEvent("nav_click", { section: link.id, location: "footer" })}
                     className="text-sm font-medium text-ink no-underline hover:text-accent"
                   >
                     {navLabels[link.id]}
@@ -116,6 +122,7 @@ export default function Footer() {
               </p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
+                onClick={() => trackEvent("email_click", { location: "footer" })}
                 className="text-sm font-semibold text-accent no-underline"
               >
                 {CONTACT_EMAIL}

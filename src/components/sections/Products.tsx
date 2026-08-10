@@ -7,6 +7,7 @@ import Reveal from "@/components/ui/Reveal";
 import Marquee from "@/components/ui/Marquee";
 import ImageWithFallback from "@/components/ui/ImageWithFallback";
 import { useLanguage } from "@/hooks/useLanguage";
+import { trackEvent } from "@/lib/track";
 import type { ProductItem } from "@/lib/i18n";
 
 function ProductCard({
@@ -93,7 +94,10 @@ export default function Products() {
                 key={product.key}
                 product={product}
                 detailLabel={t.products.detail}
-                onOpen={setOpen}
+                onOpen={(key) => {
+                  trackEvent("product_open", { product: key });
+                  setOpen(key);
+                }}
               />
             ))}
           </div>
@@ -135,6 +139,7 @@ export default function Products() {
                   </span>
                   <Link
                     href="#iletisim"
+                    onClick={() => trackEvent("cta_click", { label: "request_quote", location: "products" })}
                     className="ml-auto rounded-full bg-accent px-6.5 py-3 text-sm font-bold text-white no-underline transition-colors hover:bg-accent-hover"
                   >
                     {t.products.quote}

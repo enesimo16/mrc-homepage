@@ -5,6 +5,7 @@ import Marquee from "@/components/ui/Marquee";
 import IsometricShowcase from "@/components/hero/IsometricShowcase";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useLanguage } from "@/hooks/useLanguage";
+import { trackEvent } from "@/lib/track";
 
 function Cursor({ visible }: { visible: boolean }) {
   return (
@@ -89,12 +90,14 @@ export default function Hero() {
         <div className="flex flex-wrap items-center gap-4 pb-[70px] sm:pb-[90px]">
           <Link
             href="#ortaklik"
+            onClick={() => trackEvent("cta_click", { label: "distributor", location: "hero" })}
             className="btn-shimmer-wrap rounded-full bg-accent px-[34px] py-[18px] text-base font-bold text-white no-underline shadow-[0_12px_30px_rgba(210,35,42,0.28)] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[3px] hover:shadow-[0_18px_40px_rgba(210,35,42,0.38)]"
           >
             {t.hero.ctaPrimary}
           </Link>
           <Link
             href="#urunler"
+            onClick={() => trackEvent("cta_click", { label: "explore_products", location: "hero" })}
             className="rounded-full border border-line bg-bg2 px-[34px] py-[17px] text-base font-semibold text-ink no-underline transition-[border-color,transform] duration-[250ms] hover:-translate-y-[3px] hover:border-accent"
           >
             {t.hero.ctaSecondary}
