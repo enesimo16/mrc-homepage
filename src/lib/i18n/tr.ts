@@ -242,6 +242,7 @@ export const tr: Dictionary = {
     pin: "CAPPAFE FABRİKA",
   },
   blog: {
+    kicker: "GÜNCEL",
     title: "Blog",
     empty: "Henüz yayınlanmış bir yazı yok.",
     back: "← Blog'a dön",

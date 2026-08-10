@@ -238,6 +238,7 @@ export const ar: Dictionary = {
     pin: "مصنع كابافي",
   },
   blog: {
+    kicker: "الأحدث",
     title: "المدونة",
     empty: "لا توجد مقالات منشورة بعد.",
     back: "→ العودة إلى المدونة",

@@ -238,6 +238,7 @@ export const es: Dictionary = {
     pin: "FÁBRICA CAPPAFE",
   },
   blog: {
+    kicker: "NOVEDADES",
     title: "Blog",
     empty: "Aún no hay artículos publicados.",
     back: "← Volver al blog",

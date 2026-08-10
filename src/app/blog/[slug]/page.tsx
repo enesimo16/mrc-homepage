@@ -32,7 +32,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <>
       <Navbar />
-      <BlogPostClient post={post} />
+      <main className="relative z-[1]">
+        <BlogPostClient post={post} />
+      </main>
       <WhatsAppButton />
       <Footer />
     </>

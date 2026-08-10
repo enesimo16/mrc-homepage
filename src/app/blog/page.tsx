@@ -28,7 +28,9 @@ export default async function BlogIndexPage() {
   return (
     <>
       <Navbar />
-      <BlogListClient posts={posts} />
+      <main className="relative z-[1]">
+        <BlogListClient posts={posts} />
+      </main>
       <WhatsAppButton />
       <Footer />
     </>

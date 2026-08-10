@@ -131,6 +131,7 @@ export interface Dictionary {
     pin: string;
   };
   blog: {
+    kicker: string;
     title: string;
     empty: string;
     back: string;

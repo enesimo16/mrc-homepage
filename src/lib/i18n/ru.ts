@@ -238,6 +238,7 @@ export const ru: Dictionary = {
     pin: "ЗАВОД CAPPAFE",
   },
   blog: {
+    kicker: "НОВОСТИ",
     title: "Блог",
     empty: "Пока нет опубликованных статей.",
     back: "← Назад к блогу",
