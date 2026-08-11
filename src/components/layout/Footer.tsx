@@ -7,7 +7,7 @@ import Marquee from "@/components/ui/Marquee";
 import { SOCIALS } from "@/components/ui/SocialIcons";
 import { useLanguage } from "@/hooks/useLanguage";
 import { trackEvent } from "@/lib/track";
-import { NAV_IDS, COMPANY_ADDRESS, CONTACT_EMAIL } from "@/lib/constants";
+import { NAV_IDS, COMPANY_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL } from "@/lib/constants";
 
 /** Two slightly-tilted overlapping ticker bands (dark + red). */
 function BandTicker() {
@@ -120,6 +120,13 @@ export default function Footer() {
                 <br />
                 {COMPANY_ADDRESS.line2}
               </p>
+              <a
+                href={`tel:${CONTACT_PHONE_TEL}`}
+                onClick={() => trackEvent("phone_click", { location: "footer" })}
+                className="mb-1.5 block text-sm font-semibold text-accent no-underline"
+              >
+                {CONTACT_PHONE_DISPLAY}
+              </a>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 onClick={() => trackEvent("email_click", { location: "footer" })}

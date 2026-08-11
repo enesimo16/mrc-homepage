@@ -8,15 +8,6 @@ function InstagramIcon() {
   );
 }
 
-function YouTubeIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="2.5" y="6" width="19" height="12.5" rx="3.5" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M10.2 9.6 15.2 12.2 10.2 14.8Z" fill="currentColor" />
-    </svg>
-  );
-}
-
 function TikTokIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -56,7 +47,6 @@ function LinkedInIcon() {
 export const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/cappafe/?originalSubdomain=tr", Icon: LinkedInIcon },
   { label: "Instagram", href: "https://www.instagram.com/cappafe/", Icon: InstagramIcon },
-  { label: "YouTube", href: "#", Icon: YouTubeIcon },
   { label: "TikTok", href: "https://www.tiktok.com/@cappafe.car.parts", Icon: TikTokIcon },
   { label: "Facebook", href: "https://www.facebook.com/cappafe/?locale=tr_TR", Icon: FacebookIcon },
 ];

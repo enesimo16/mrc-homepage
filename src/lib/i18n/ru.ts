@@ -207,6 +207,7 @@ export const ru: Dictionary = {
     name: "Имя и фамилия",
     company: "Название компании",
     email: "Адрес эл. почты",
+    phone: "Номер телефона",
     country: "Страна",
     region: "Интересующий регион",
     volumes: [
@@ -231,6 +232,7 @@ export const ru: Dictionary = {
     name: "Имя и фамилия",
     company: "Компания",
     email: "Адрес эл. почты",
+    phone: "Номер телефона",
     subject: "Тема",
     message: "Ваше сообщение",
     send: "Отправить",

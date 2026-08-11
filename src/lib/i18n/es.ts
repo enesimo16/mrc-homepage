@@ -207,6 +207,7 @@ export const es: Dictionary = {
     name: "Nombre completo",
     company: "Nombre de la empresa",
     email: "Correo electrónico",
+    phone: "Número de teléfono",
     country: "País",
     region: "Región de interés",
     volumes: [
@@ -231,6 +232,7 @@ export const es: Dictionary = {
     name: "Nombre completo",
     company: "Empresa",
     email: "Correo electrónico",
+    phone: "Número de teléfono",
     subject: "Asunto",
     message: "Su mensaje",
     send: "Enviar",

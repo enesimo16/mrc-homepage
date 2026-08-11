@@ -207,6 +207,7 @@ export const tr: Dictionary = {
     name: "İsim Soyisim",
     company: "Şirket Adı",
     email: "E-posta Adresi",
+    phone: "Telefon Numarası",
     country: "Ülke",
     region: "İlgilenilen Bölge",
     volumes: [
@@ -235,6 +236,7 @@ export const tr: Dictionary = {
     name: "İsim Soyisim",
     company: "Şirket",
     email: "E-posta Adresi",
+    phone: "Telefon Numarası",
     subject: "Konu",
     message: "Mesajınız",
     send: "Gönder",

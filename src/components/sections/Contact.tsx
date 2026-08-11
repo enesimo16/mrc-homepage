@@ -6,7 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { trackEvent } from "@/lib/track";
-import { COMPANY_ADDRESS, CONTACT_EMAIL } from "@/lib/constants";
+import { COMPANY_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL } from "@/lib/constants";
 
 const EASE = [0.2, 0.7, 0.2, 1] as const;
 
@@ -95,6 +95,13 @@ function AddressChip({ isMobile }: { isMobile: boolean }) {
       </div>
       <div className="mt-2.5 flex flex-wrap gap-3.5">
         <a
+          href={`tel:${CONTACT_PHONE_TEL}`}
+          onClick={() => trackEvent("phone_click", { location: "contact" })}
+          className="text-[13px] font-bold text-accent no-underline"
+        >
+          {CONTACT_PHONE_DISPLAY}
+        </a>
+        <a
           href={`mailto:${CONTACT_EMAIL}`}
           onClick={() => trackEvent("email_click", { location: "contact" })}
           className="text-[13px] font-bold text-accent no-underline"
@@ -123,6 +130,7 @@ function ContactCard({ isMobile }: { isMobile: boolean }) {
   const nameId = useId();
   const companyId = useId();
   const emailId = useId();
+  const phoneId = useId();
   const subjectId = useId();
   const messageId = useId();
 
@@ -202,17 +210,27 @@ function ContactCard({ isMobile }: { isMobile: boolean }) {
             <input id={companyId} name="company" placeholder={t.contact.company} className={inputClass} />
           </div>
         </div>
-        <label htmlFor={emailId} className="sr-only">
-          {t.contact.email}
-        </label>
-        <input
-          id={emailId}
-          name="email"
-          type="email"
-          placeholder={t.contact.email}
-          required
-          className={inputClass}
-        />
+        <div className="flex flex-wrap gap-2.75">
+          <div className="flex-1">
+            <label htmlFor={emailId} className="sr-only">
+              {t.contact.email}
+            </label>
+            <input
+              id={emailId}
+              name="email"
+              type="email"
+              placeholder={t.contact.email}
+              required
+              className={inputClass}
+            />
+          </div>
+          <div className="flex-1">
+            <label htmlFor={phoneId} className="sr-only">
+              {t.contact.phone}
+            </label>
+            <input id={phoneId} name="phone" type="tel" placeholder={t.contact.phone} className={inputClass} />
+          </div>
+        </div>
         <label htmlFor={subjectId} className="sr-only">
           {t.contact.subject}
         </label>

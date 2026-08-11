@@ -106,6 +106,7 @@ export interface Dictionary {
     name: string;
     company: string;
     email: string;
+    phone: string;
     country: string;
     region: string;
     volumes: string[];
@@ -124,6 +125,7 @@ export interface Dictionary {
     name: string;
     company: string;
     email: string;
+    phone: string;
     subject: string;
     message: string;
     send: string;

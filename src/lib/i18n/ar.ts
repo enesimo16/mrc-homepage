@@ -207,6 +207,7 @@ export const ar: Dictionary = {
     name: "الاسم الكامل",
     company: "اسم الشركة",
     email: "البريد الإلكتروني",
+    phone: "رقم الهاتف",
     country: "الدولة",
     region: "المنطقة المهتم بها",
     volumes: [
@@ -231,6 +232,7 @@ export const ar: Dictionary = {
     name: "الاسم الكامل",
     company: "الشركة",
     email: "البريد الإلكتروني",
+    phone: "رقم الهاتف",
     subject: "الموضوع",
     message: "رسالتك",
     send: "إرسال",

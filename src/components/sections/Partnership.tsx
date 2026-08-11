@@ -151,6 +151,7 @@ export default function Partnership() {
                     <FormField label={t.partner.name} name="name" required />
                     <FormField label={t.partner.company} name="company" required />
                     <FormField label={t.partner.email} name="email" type="email" required />
+                    <FormField label={t.partner.phone} name="phone" type="tel" />
                     <FormField label={t.partner.country} name="country" required />
                     <FormField label={t.partner.region} name="region" />
                     <div>
