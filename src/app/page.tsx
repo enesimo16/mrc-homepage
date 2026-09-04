@@ -11,9 +11,12 @@ import Story from "@/components/sections/Story";
 import ProductionFlow from "@/components/sections/ProductionFlow";
 import GroupCompanies from "@/components/sections/GroupCompanies";
 import Partnership from "@/components/sections/Partnership";
+import BlogPreview from "@/components/sections/BlogPreview";
 import Contact from "@/components/sections/Contact";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
   return (
     <>
       <Navbar />
@@ -30,6 +33,7 @@ export default function Home() {
         <ProductionFlow />
         <GroupCompanies />
         <Partnership />
+        <BlogPreview />
         <Contact />
       </main>
 

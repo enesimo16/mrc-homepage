@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import CatalogHeader from "@/components/catalog/CatalogHeader";
 import CatalogGallery from "@/components/catalog/CatalogGallery";
 
 export const metadata: Metadata = {
-  title: "Katalog",
+  title: "Ürün Kataloğu",
   description: "Cappafe ürün kataloğu — tüm ürün gamımızı tek bir katalogda inceleyin.",
   alternates: { canonical: "/catalog" },
   openGraph: {
     type: "website",
     url: "/catalog",
-    title: "Katalog — Cappafe",
+    title: "Ürün Kataloğu — Cappafe",
     description: "Cappafe ürün kataloğu — tüm ürün gamımızı tek bir katalogda inceleyin.",
   },
 };
@@ -31,7 +30,6 @@ export default function CatalogPage() {
           </div>
         </section>
       </main>
-      <WhatsAppButton />
       <Footer />
     </>
   );

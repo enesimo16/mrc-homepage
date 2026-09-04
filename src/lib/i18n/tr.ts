@@ -251,9 +251,9 @@ export const tr: Dictionary = {
   },
   catalog: {
     kicker: "ÜRÜN KATALOĞU",
-    title: "Katalog",
+    navLabel: "Katalog",
+    title: "Ürün Kataloğu",
     intro: "Tüm ürün gamımızı tek bir katalogda inceleyin.",
-    view: "Görüntüle",
     download: "İndir",
     pageLabel: "sayfa",
     tabLabel: "Kataloğumuzu İncelemek İster misiniz?",

@@ -140,9 +140,9 @@ export interface Dictionary {
   };
   catalog: {
     kicker: string;
+    navLabel: string;
     title: string;
     intro: string;
-    view: string;
     download: string;
     pageLabel: string;
     tabLabel: string;

@@ -247,9 +247,9 @@ export const es: Dictionary = {
   },
   catalog: {
     kicker: "CATÁLOGO DE PRODUCTOS",
-    title: "Catálogo",
+    navLabel: "Catálogo",
+    title: "Catálogo de Productos",
     intro: "Descubra toda nuestra gama de productos en un solo catálogo.",
-    view: "Ver",
     download: "Descargar",
     pageLabel: "página",
     tabLabel: "¿Quiere ver nuestro catálogo?",

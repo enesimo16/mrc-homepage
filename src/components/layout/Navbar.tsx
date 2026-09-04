@@ -192,6 +192,9 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const anchorHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
   const isBlogActive = pathname?.startsWith("/blog") ?? false;
+  const isCatalogActive = pathname?.startsWith("/catalog") ?? false;
+  const mainNavLinks = NAV_IDS.filter((link) => link.id !== "iletisim");
+  const contactLink = NAV_IDS.find((link) => link.id === "iletisim")!;
 
   const navLabels: Record<string, string> = {
     top: t.nav.home,
@@ -221,7 +224,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="relative ml-auto hidden items-center gap-4 lg:flex xl:gap-6" aria-label={t.nav.menuAria}>
-          {NAV_IDS.map((link) => {
+          {mainNavLinks.map((link) => {
             const isActive = isHome && link.navIndex === activeNavIndex;
             return (
               <Link
@@ -252,6 +255,41 @@ export default function Navbar() {
           >
             {t.blog.title}
             {isBlogActive && (
+              <motion.span
+                layoutId="nav-underline"
+                className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded-full bg-accent"
+                transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+              />
+            )}
+          </Link>
+          <Link
+            href="/catalog"
+            onClick={() => trackEvent("nav_click", { section: "catalog" })}
+            className={`relative py-1.5 text-[13px] whitespace-nowrap no-underline transition-colors xl:text-sm ${
+              isCatalogActive ? "font-bold text-accent" : "font-medium text-muted hover:text-accent"
+            }`}
+          >
+            {t.catalog.navLabel}
+            {isCatalogActive && (
+              <motion.span
+                layoutId="nav-underline"
+                className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded-full bg-accent"
+                transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+              />
+            )}
+          </Link>
+          <Link
+            key={contactLink.id}
+            href={anchorHref(contactLink.id)}
+            onClick={() => trackEvent("nav_click", { section: contactLink.id })}
+            className={`relative py-1.5 text-[13px] whitespace-nowrap no-underline transition-colors xl:text-sm ${
+              isHome && contactLink.navIndex === activeNavIndex
+                ? "font-bold text-accent"
+                : "font-medium text-muted hover:text-accent"
+            }`}
+          >
+            {navLabels[contactLink.id]}
+            {isHome && contactLink.navIndex === activeNavIndex && (
               <motion.span
                 layoutId="nav-underline"
                 className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded-full bg-accent"
@@ -322,7 +360,7 @@ export default function Navbar() {
             aria-label={t.nav.menuAria}
           >
             <div className="flex flex-col gap-1 px-4 py-3">
-              {NAV_IDS.map((link) => (
+              {mainNavLinks.map((link) => (
                 <Link
                   key={link.id}
                   href={anchorHref(link.id)}
@@ -348,6 +386,31 @@ export default function Navbar() {
                 }`}
               >
                 {t.blog.title}
+              </Link>
+              <Link
+                href="/catalog"
+                onClick={() => {
+                  trackEvent("nav_click", { section: "catalog", location: "mobile" });
+                  setMobileOpen(false);
+                }}
+                className={`rounded-lg px-3 py-2.5 text-sm no-underline ${
+                  isCatalogActive ? "bg-hair font-bold text-accent" : "text-ink"
+                }`}
+              >
+                {t.catalog.navLabel}
+              </Link>
+              <Link
+                key={contactLink.id}
+                href={anchorHref(contactLink.id)}
+                onClick={() => {
+                  trackEvent("nav_click", { section: contactLink.id, location: "mobile" });
+                  setMobileOpen(false);
+                }}
+                className={`rounded-lg px-3 py-2.5 text-sm no-underline ${
+                  isHome && contactLink.navIndex === activeNavIndex ? "bg-hair font-bold text-accent" : "text-ink"
+                }`}
+              >
+                {navLabels[contactLink.id]}
               </Link>
               <div className="mt-1 flex items-center gap-2.5 px-3 pt-2">
                 <a
