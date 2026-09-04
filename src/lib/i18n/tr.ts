@@ -249,6 +249,15 @@ export const tr: Dictionary = {
     empty: "Henüz yayınlanmış bir yazı yok.",
     back: "← Blog'a dön",
   },
+  catalog: {
+    kicker: "ÜRÜN KATALOĞU",
+    title: "Katalog",
+    intro: "Tüm ürün gamımızı tek bir katalogda inceleyin.",
+    view: "Görüntüle",
+    download: "İndir",
+    pageLabel: "sayfa",
+    tabLabel: "Kataloğumuzu İncelemek İster misiniz?",
+  },
   footer: {
     about:
       "Dikey entegre otomotiv dış aksesuar üreticisi. Ham ABS levhadan bitmiş ürüne, tek grup, tam kontrol.",

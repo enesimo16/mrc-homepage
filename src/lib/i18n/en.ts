@@ -245,6 +245,15 @@ export const en: Dictionary = {
     empty: "No posts published yet.",
     back: "← Back to blog",
   },
+  catalog: {
+    kicker: "PRODUCT CATALOG",
+    title: "Catalog",
+    intro: "Explore our full product range in one catalog.",
+    view: "View",
+    download: "Download",
+    pageLabel: "page",
+    tabLabel: "Want to Explore Our Catalog?",
+  },
   footer: {
     about:
       "Vertically integrated automotive exterior accessories manufacturer. From raw ABS sheet to finished product — one group, full control.",

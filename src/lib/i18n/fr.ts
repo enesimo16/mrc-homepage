@@ -245,6 +245,15 @@ export const fr: Dictionary = {
     empty: "Aucun article publié pour le moment.",
     back: "← Retour au blog",
   },
+  catalog: {
+    kicker: "CATALOGUE PRODUITS",
+    title: "Catalogue",
+    intro: "Découvrez toute notre gamme de produits dans un seul catalogue.",
+    view: "Voir",
+    download: "Télécharger",
+    pageLabel: "page",
+    tabLabel: "Découvrir notre catalogue ?",
+  },
   footer: {
     about:
       "Fabricant d'accessoires extérieurs automobiles à intégration verticale. De la plaque ABS brute au produit fini — un groupe, un contrôle total.",

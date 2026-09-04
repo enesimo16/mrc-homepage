@@ -245,6 +245,15 @@ export const de: Dictionary = {
     empty: "Noch keine veröffentlichten Beiträge.",
     back: "← Zurück zum Blog",
   },
+  catalog: {
+    kicker: "PRODUKTKATALOG",
+    title: "Katalog",
+    intro: "Entdecken Sie unser gesamtes Produktsortiment in einem Katalog.",
+    view: "Ansehen",
+    download: "Herunterladen",
+    pageLabel: "Seite",
+    tabLabel: "Unseren Katalog entdecken?",
+  },
   footer: {
     about:
       "Vertikal integrierter Hersteller von Automobil-Außenzubehör. Von der ABS-Rohplatte zum fertigen Produkt — eine Gruppe, volle Kontrolle.",

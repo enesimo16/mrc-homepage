@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import SectionDots from "@/components/layout/SectionDots";
 import ToTopButton from "@/components/layout/ToTopButton";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import CatalogTab from "@/components/layout/CatalogTab";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Stats from "@/components/sections/Stats";
@@ -19,6 +20,7 @@ export default function Home() {
       <SectionDots />
       <ToTopButton />
       <WhatsAppButton />
+      <CatalogTab />
 
       <main className="relative z-[1]">
         <Hero />

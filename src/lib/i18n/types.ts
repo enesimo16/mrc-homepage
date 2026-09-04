@@ -138,6 +138,15 @@ export interface Dictionary {
     empty: string;
     back: string;
   };
+  catalog: {
+    kicker: string;
+    title: string;
+    intro: string;
+    view: string;
+    download: string;
+    pageLabel: string;
+    tabLabel: string;
+  };
   footer: {
     about: string;
     menu: string;

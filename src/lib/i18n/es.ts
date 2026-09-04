@@ -245,6 +245,15 @@ export const es: Dictionary = {
     empty: "Aún no hay artículos publicados.",
     back: "← Volver al blog",
   },
+  catalog: {
+    kicker: "CATÁLOGO DE PRODUCTOS",
+    title: "Catálogo",
+    intro: "Descubra toda nuestra gama de productos en un solo catálogo.",
+    view: "Ver",
+    download: "Descargar",
+    pageLabel: "página",
+    tabLabel: "¿Quiere ver nuestro catálogo?",
+  },
   footer: {
     about:
       "Fabricante de accesorios exteriores de automoción integrado verticalmente. De la plancha ABS en bruto al producto terminado: un grupo, control total.",
